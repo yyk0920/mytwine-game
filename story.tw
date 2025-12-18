@@ -1,0 +1,107 @@
+:: StoryTitle
+궁중만상
+
+:: StoryData
+{
+        "ifid": "871FEB02-5811-4B6E-BC48-7DE465759CFD"
+}
+
+:: Start
+## **궁정만상(宮廷萬象): The Thousand Paths**
+
+황궁은 하나의 세계이며, 그 안에는 수만 개의 삶과 결말이 공존합니다.
+당신은 새로 입궁한 후궁으로서 황궁에 첫 발걸음을 내딛었습니다. 
+앞으로 당신이 하게 될 선택은 당신의 미래를 바꾸기 시작할 것입니다. 
+총애, 권력, 사랑, 또는 그 무엇도 아닌 것. // 총애, 권력, 사랑에 글씨 색깔 다르게
+당신은 무언가를 얻기 위해, 반드시 무언가를 잃어야만 합니다. 
+그러나 이 황궁 내의 정답은 있을지라도, 당신의 삶에 정답이란 없습니다.
+당신이 어떤 길을 걷든, 그 결말은 당신의 선택이 쌓여 만들어진 결과입니다.
+궁정만상宮廷萬象은 텍스트 기반 인터랙티브 궁중 서사 게임입니다. 궁정만상에서 ****후궁으로 입궁해 황궁 내의 다양한 삶을 바라보고, 수천 개의 선택이 얽혀 만들어지는 황궁의 이야기에 함께 하세요.
+
+[[계속->prologue]]
+
+:: prologue
+당신은 황제의 수많은 후궁들 중 한 명으로 입궁하게 되었습니다.<br>
+하지만, 그 결말은 오직 당신만이 정할 수 있습니다.<br>
+당신의 선택으로 세상을 바꿔나가세요.<br>
+<br>
+
+
+[[계속->Setup]]
+
+:: Setup
+<<set $difficulty = "">>
+
+<h2>초기 설정</h2>
+<h3>입궁 품계</h3>
+
+<div style="margin:0; padding:0;">
+
+<label style="display:block; margin:0; padding:0;">
+<<radiobutton "$difficulty" "easy">> 빈으로 입궁
+</label>
+
+<p
+  style="
+    margin:2px 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+당신은 황태자의 왕부에서부터 측복진 후보로 거론되었고, 가문 간의 혼약만 맺어둔 상태였습니다.
+그러나 혼인이 성사되기 직전, 선황의 붕어로 인해 황위 계승이 일어나며 당신은 측복진이 아닌 빈 중 한 명으로 입궁하게 됩니다.
+이미 황실 웃어른들은 당신을 어느 정도 신뢰하고 있으며, 당신의 아랫사람들도 당신을 어엿한 황제의 후궁으로 여깁니다.
+당신에게는 적당한 권력이 있으며, 황제의 적당한 총애를 받고 있습니다.
+당신의 친정 가문은 당신의 흥망성쇠에 휘둘리지 않고 권세를 누릴 수 있을 만큼 번듯합니다.
+</p>
+
+</div>
+
+<div style="margin-bottom:12px;">
+
+<label style="display:block;">
+<<radiobutton "$difficulty" "normal">> 보통
+</label>
+
+<p
+  style="
+    margin:2px 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+개발자가 의도한 기본 난이도입니다.
+선택의 결과가 명확히 갈립니다.
+</p>
+
+</div>
+
+<div>
+
+<label style="display:block;">
+<<radiobutton "$difficulty" "hard">> 어려움
+</label>
+
+<p
+  style="
+    margin:2px 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+적의 행동이 더 치밀해지며
+잘못된 선택은 치명적인 결과를 낳습니다.
+</p>
+
+</div>
+
+<br>
+[[설정 완료->route_select]]
+
+:: route_select
+어디로 갈까?
+
+[[연경 루트로 간다->yyk]]
