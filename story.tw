@@ -35,9 +35,7 @@
 <h2>초기 설정</h2>
 <h3>입궁 품계</h3>
 
-<div style="margin:0; padding:0;">
-
-<label style="display:block; margin:0; padding:0;">
+<label style="display:block; margin:0;">
 <<radiobutton "$difficulty" "easy">> 빈으로 입궁
 </label>
 
@@ -54,6 +52,38 @@
 이미 황실 웃어른들은 당신을 어느 정도 신뢰하고 있으며, 당신의 아랫사람들도 당신을 어엿한 황제의 후궁으로 여깁니다.
 당신에게는 적당한 권력이 있으며, 황제의 적당한 총애를 받고 있습니다.
 당신의 친정 가문은 당신의 흥망성쇠에 휘둘리지 않고 권세를 누릴 수 있을 만큼 번듯합니다.
+</p>
+
+<label style="display:block; margin:0;">
+<<radiobutton "$difficulty" "normal">> 보통
+</label>
+
+<p
+  style="
+    margin:2px 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+개발자가 의도한 기본 난이도입니다.<br>
+선택의 결과가 명확히 갈립니다.
+</p>
+
+<label style="display:block; margin:0;">
+<<radiobutton "$difficulty" "hard">> 어려움
+</label>
+
+<p
+  style="
+    margin:2px 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+적의 행동이 더 치밀해지며<br>
+잘못된 선택은 치명적인 결과를 낳습니다.
 </p>
 
 </div>
