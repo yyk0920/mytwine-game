@@ -3,7 +3,9 @@
 
 :: StoryData
 {
-        "ifid": "871FEB02-5811-4B6E-BC48-7DE465759CFD"
+        "ifid": "871FEB02-5811-4B6E-BC48-7DE465759CFD",
+        "format": "SugarCube",
+        "format-version": "2.37.3"
 }
 
 :: Start
@@ -12,7 +14,7 @@
 황궁은 하나의 세계이며, 그 안에는 수만 개의 삶과 결말이 공존합니다.
 당신은 새로 입궁한 후궁으로서 황궁에 첫 발걸음을 내딛었습니다. 
 앞으로 당신이 하게 될 선택은 당신의 미래를 바꾸기 시작할 것입니다. 
-총애, 권력, 사랑, 또는 그 무엇도 아닌 것. // 총애, 권력, 사랑에 글씨 색깔 다르게
+<span style="color:magenta;">총애</span>, <span style="color:blue";>권력</span>, <span style="color:red;">사랑</span>, 또는 그 무엇도 아닌 것. 
 당신은 무언가를 얻기 위해, 반드시 무언가를 잃어야만 합니다. 
 그러나 이 황궁 내의 정답은 있을지라도, 당신의 삶에 정답이란 없습니다.
 당신이 어떤 길을 걷든, 그 결말은 당신의 선택이 쌓여 만들어진 결과입니다.
@@ -21,27 +23,25 @@
 [[계속->prologue]]
 
 :: prologue
-당신은 황제의 수많은 후궁들 중 한 명으로 입궁하게 되었습니다.<br>
-하지만, 그 결말은 오직 당신만이 정할 수 있습니다.<br>
-당신의 선택으로 세상을 바꿔나가세요.<br>
-<br>
-
+당신은 황제의 수많은 후궁들 중 한 명으로 입궁하게 되었습니다.
+하지만, 그 결말은 오직 당신만이 정할 수 있습니다.
+당신의 선택으로 세상을 바꿔나가세요.
 
 [[계속->Setup]]
 
 :: Setup
 <<set $difficulty = "">>
 
-<h2>초기 설정</h2>
-<h3>입궁 품계</h3>
+<h2 style="margin:0;">초기 설정</h2>
+<h3 style="margin:0;">입궁 품계</h3>
 
-<label style="display:block; margin:0;">
+<label style="display:block; margin:0; line-height:1;">
 <<radiobutton "$difficulty" "easy">> 빈으로 입궁
 </label>
 
 <p
   style="
-    margin:2px 0 6px 1.2em;
+    margin:0 0 6px 1.2em;
     padding-left:0.6em;
     border-left:2px solid #ccc;
     line-height:1.2;
@@ -54,72 +54,29 @@
 당신의 친정 가문은 당신의 흥망성쇠에 휘둘리지 않고 권세를 누릴 수 있을 만큼 번듯합니다.
 </p>
 
-<label style="display:block; margin:0;">
+<label style="display:block; margin:0; line-height:1;">
 <<radiobutton "$difficulty" "normal">> 보통
 </label>
 
 <p
   style="
-    margin:2px 0 6px 1.2em;
+    margin:0 0 6px 1.2em;
     padding-left:0.6em;
     border-left:2px solid #ccc;
     line-height:1.2;
   "
 >
-개발자가 의도한 기본 난이도입니다.<br>
+개발자가 의도한 기본 난이도입니다.
 선택의 결과가 명확히 갈립니다.
 </p>
 
-<label style="display:block; margin:0;">
+<label style="display:block; margin:0; line-height:1;">
 <<radiobutton "$difficulty" "hard">> 어려움
 </label>
 
 <p
   style="
-    margin:2px 0 6px 1.2em;
-    padding-left:0.6em;
-    border-left:2px solid #ccc;
-    line-height:1.2;
-  "
->
-적의 행동이 더 치밀해지며<br>
-잘못된 선택은 치명적인 결과를 낳습니다.
-</p>
-
-</div>
-
-<div style="margin-bottom:12px;">
-
-<label style="display:block;">
-<<radiobutton "$difficulty" "normal">> 보통
-</label>
-
-<p
-  style="
-    margin:2px 0 6px 1.2em;
-    padding-left:0.6em;
-    border-left:2px solid #ccc;
-    line-height:1.2;
-  "
->
-시작 난이도: 귀인
-당신은 이번 수녀 선발로 황제의 후궁이 되었습니다.
-당신의 기품과 미모에 황궁의 웃어른은 물론이고 황제 또한 당신을 마음에 들어했습니다.
-비록 황궁 내에 권력은 없으나, 권력은 손에 쥐면 그만인 일입니다.
-당신의 친정 가문은 당신이 황제의 총애를 받길 바라지만, 당신이 위험에 처하지 않는 것이 우선입니다.
-</p>
-
-</div>
-
-<div>
-
-<label style="display:block;">
-<<radiobutton "$difficulty" "hard">> 어려움
-</label>
-
-<p
-  style="
-    margin:2px 0 6px 1.2em;
+    margin:0 0 6px 1.2em;
     padding-left:0.6em;
     border-left:2px solid #ccc;
     line-height:1.2;
@@ -128,8 +85,6 @@
 적의 행동이 더 치밀해지며
 잘못된 선택은 치명적인 결과를 낳습니다.
 </p>
-
-</div>
 
 <br>
 [[설정 완료->route_select]]
