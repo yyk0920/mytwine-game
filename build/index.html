@@ -359,19 +359,49 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 &lt;br&gt;&lt;br&gt;
 
-&lt;button onclick=&quot;mockLogin()&quot;&gt;로그인&lt;/button&gt;
+&lt;button onclick=&quot;doLogin()&quot;&gt;로그인&lt;/button&gt;
 &lt;br&gt;
 [[회원가입-&gt;Signup]]</tw-passagedata><tw-passagedata pid="27" name="DoLogin" tags="" position="850,350" size="100,100">&lt;!-- 이 패시지는 직접 오지 않음 --&gt;</tw-passagedata><tw-passagedata pid="28" name="StoryInit" tags="" position="975,350" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
 &lt;&lt;set $hasSave = false&gt;&gt;
+&lt;&lt;set $userId = null&gt;&gt;
 
 &lt;&lt;script&gt;&gt;
-window.mockLogin = function () {
-  State.variables.isLogin = true;
+window.doLogin = function () {
+  const id = document.getElementById(&quot;login_id&quot;).value;
+  const pw = document.getElementById(&quot;login_pw&quot;).value;
 
-  // mock: 저장 데이터 없음
-  State.variables.hasSave = false;
+  if (!id || !pw) {
+    alert(&quot;아이디와 비밀번호를 입력하세요.&quot;);
+    return;
+  }
 
-  Engine.play(&quot;MainMenu&quot;);
+  const formData = new URLSearchParams();
+  formData.append(&quot;id&quot;, id);
+  formData.append(&quot;pw&quot;, pw);
+
+  fetch(&quot;http://localhost/mytwine-server/login.jsp&quot;, {
+    method: &quot;POST&quot;,
+    headers: {
+      &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
+    },
+    body: formData.toString()
+  })
+  .then(res =&gt; res.json())
+  .then(data =&gt; {
+    if (data.success) {
+      State.variables.isLogin = true;
+      State.variables.userId = data.userId;
+      State.variables.hasSave = data.hasSave;
+
+      Engine.play(&quot;MainMenu&quot;);
+    } else {
+      alert(&quot;로그인 실패: 아이디 또는 비밀번호가 틀렸습니다.&quot;);
+    }
+  })
+  .catch(err =&gt; {
+    console.error(err);
+    alert(&quot;서버 연결에 실패했습니다.&quot;);
+  });
 };
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Signup" tags="" position="1100,350" size="100,100">회원가입이 완료되었습니다.
 
