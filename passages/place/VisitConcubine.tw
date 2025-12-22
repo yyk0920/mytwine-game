@@ -1,0 +1,50 @@
+/* 5. 다른 후궁을 만난다. */
+:: VisitConcubine
+
+누구를 찾아갈지 고민한다.
+
+(1) [[심채운을 찾아간다->Visit_SimChaewoon]]
+(2) [[단앵을 찾아간다->Visit_DanAeng]]
+(3) [[다시 생각한다->PalaceHub]]
+
+:: Visit_SimChaewoon
+
+익곤궁에 도착했다.
+혜비 심채운의 처소다.
+
+(1) [[인사를 건넨다->Talk_SimChaewoon]]
+(2) [[조용히 분위기를 살핀다->Observe_SimChaewoon]]
+(3) [[물러난다->PalaceHub]]
+
+:: Talk_SimChaewoon
+
+심채운과 이야기를 했다.
+
+(1) [[돌아간다->PalaceHub]]
+
+:: Observe_SimChaewoon
+
+분위기를 살폈다.
+
+(1) [[돌아간다->PalaceHub]]
+
+:: Visit_DanAeng
+
+익곤궁의 한켠이다.
+답응 단앵의 처소이다.
+
+(1) [[인사를 건넨다->Talk_DanAeng]]
+(2) [[조용히 분위기를 살핀다->Observe_DanAeng]]
+(3) [[돌아간다->PalaceHub]]
+
+:: Talk_DanAeng
+
+단앵과 이야기를 나누었다.
+
+(1) [[돌아간다->PalaceHub]]
+
+:: Observe_DanAeng
+
+분위기를 살폈다.
+
+(1) [[돌아간다->PalaceHub]]
