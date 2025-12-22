@@ -346,81 +346,64 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 (2) [[잠자리에 든다-&gt;MyRoom]]
 (3) [[황제의 소식을 엿듣는다-&gt;EmperorHall]]
 (4) [[몸을 씻는다-&gt;Bath]]
-(5) [[다른 후궁을 만난다-&gt;VisitConcubine]]</tw-passagedata><tw-passagedata pid="25" name="LoginCheck" tags="" position="600,350" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
-  [[계속-&gt;MainMenu]]
+(5) [[다른 후궁을 만난다-&gt;VisitConcubine]]</tw-passagedata><tw-passagedata pid="25" name="StoryInit" tags="" position="600,350" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
+&lt;&lt;set $hasSave = false&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="LoginCheck" tags="" position="725,350" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
+	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
-  [[계속-&gt;Login]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Login" tags="" position="725,350" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
+	[[계속-&gt;Login]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Login" tags="" position="850,350" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
 
-아이디와 비밀번호를 입력하세요.
+아이디와 비밀번호를 입력하세요.&lt;br&gt;&lt;br&gt;
 
-&lt;input id=&quot;login_id&quot; placeholder=&quot;ID&quot;&gt;
-&lt;input id=&quot;login_pw&quot; type=&quot;password&quot; placeholder=&quot;Password&quot;&gt;
+&lt;input id=&quot;login_id&quot; placeholder=&quot;ID&quot;&gt;&lt;br&gt;
+&lt;input id=&quot;login_pw&quot; type=&quot;password&quot; placeholder=&quot;Password&quot;&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;br&gt;&lt;br&gt;
+&lt;button onclick=&quot;doLogin()&quot;&gt;로그인&lt;/button&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;button onclick=&quot;doLogin()&quot;&gt;로그인&lt;/button&gt;
-&lt;br&gt;
-[[회원가입-&gt;Signup]]</tw-passagedata><tw-passagedata pid="27" name="DoLogin" tags="" position="850,350" size="100,100">&lt;!-- 이 패시지는 직접 오지 않음 --&gt;</tw-passagedata><tw-passagedata pid="28" name="StoryInit" tags="" position="975,350" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
-&lt;&lt;set $hasSave = false&gt;&gt;
-&lt;&lt;set $userId = null&gt;&gt;
+[[회원가입-&gt;Signup]]
 
 &lt;&lt;script&gt;&gt;
 window.doLogin = function () {
-  const id = document.getElementById(&quot;login_id&quot;).value;
-  const pw = document.getElementById(&quot;login_pw&quot;).value;
+	const id = document.getElementById(&quot;login_id&quot;).value;
+	const pw = document.getElementById(&quot;login_pw&quot;).value;
 
-  if (!id || !pw) {
-    alert(&quot;아이디와 비밀번호를 입력하세요.&quot;);
-    return;
-  }
+	if (!id || !pw) {
+		alert(&quot;아이디와 비밀번호를 입력하세요.&quot;);
+		return;
+	}
 
-  const formData = new URLSearchParams();
-  formData.append(&quot;id&quot;, id);
-  formData.append(&quot;pw&quot;, pw);
-
-  fetch(&quot;http://localhost/mytwine-server/login.jsp&quot;, {
-    method: &quot;POST&quot;,
-    headers: {
-      &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
-    },
-    body: formData.toString()
-  })
-  .then(res =&gt; res.json())
-  .then(data =&gt; {
-    if (data.success) {
-      State.variables.isLogin = true;
-      State.variables.userId = data.userId;
-      State.variables.hasSave = data.hasSave;
-
-      Engine.play(&quot;MainMenu&quot;);
-    } else {
-      alert(&quot;로그인 실패: 아이디 또는 비밀번호가 틀렸습니다.&quot;);
-    }
-  })
-  .catch(err =&gt; {
-    console.error(err);
-    alert(&quot;서버 연결에 실패했습니다.&quot;);
-  });
+	fetch(&quot;/myTwine/login.jsp?id=&quot; + encodeURIComponent(id) + &quot;&amp;pw=&quot; + encodeURIComponent(pw))
+		.then(res =&gt; res.json())
+		.then(data =&gt; {
+			if (data.ok) {
+				State.variables.isLogin = true;
+				Engine.play(&quot;MainMenu&quot;);
+			} else {
+				alert(&quot;로그인 실패&quot;);
+			}
+		})
+		.catch(err =&gt; {
+			alert(&quot;서버 연결 실패&quot;);
+			console.error(err);
+		});
 };
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Signup" tags="" position="1100,350" size="100,100">회원가입이 완료되었습니다.
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Signup" tags="" position="975,350" size="100,100">회원가입 기능은 추후 구현 예정입니다.
 
-[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="30" name="MainMenu" tags="" position="1225,350" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
+[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="29" name="MainMenu" tags="" position="1100,350" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
 
-(1) [[새 게임-&gt;NewGame]]
-(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="31" name="NewGame" tags="" position="100,475" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
-[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="32" name="ContinueCheck" tags="" position="225,475" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
-  [[이어하기-&gt;LoadGame]]
+(1) [[새 게임-&gt;NewGame]]  
+(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="30" name="NewGame" tags="" position="1225,350" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
+[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="31" name="ContinueCheck" tags="" position="100,475" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
+	[[이어하기-&gt;LoadGame]]
 &lt;&lt;else&gt;&gt;
-  저장된 데이터가 없습니다.
-  자동으로 새 게임을 시작합니다.
-
-  [[시작-&gt;prologue]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="LoadGame" tags="" position="350,475" size="100,100">&lt;&lt;script&gt;&gt;
+	저장된 데이터가 없습니다.&lt;br&gt;
+	자동으로 새 게임을 시작합니다.&lt;br&gt;&lt;br&gt;
+	[[시작-&gt;prologue]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="LoadGame" tags="" position="225,475" size="100,100">&lt;&lt;script&gt;&gt;
 /*
-JSP 연동 시 이 부분만 교체:
+다음 단계에서 구현 예정:
 
-fetch(&quot;/loadGame.jsp&quot;)
+fetch(&quot;/myTwine/loadGame.jsp&quot;)
   .then(r =&gt; r.json())
   .then(data =&gt; {
     State.variables = data.state;

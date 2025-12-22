@@ -23,28 +23,40 @@
 
 <<script>>
 window.doLogin = function () {
-	const id = document.getElementById("login_id").value;
-	const pw = document.getElementById("login_pw").value;
+	const id = document.getElementById("login_id").value.trim();
+	const pw = document.getElementById("login_pw").value.trim();
 
 	if (!id || !pw) {
 		alert("아이디와 비밀번호를 입력하세요.");
 		return;
 	}
 
-	fetch("/myTwine/login.jsp?id=" + encodeURIComponent(id) + "&pw=" + encodeURIComponent(pw))
-		.then(res => res.json())
-		.then(data => {
-			if (data.ok) {
-				State.variables.isLogin = true;
-				Engine.play("MainMenu");
-			} else {
-				alert("로그인 실패");
-			}
-		})
-		.catch(err => {
-			alert("서버 연결 실패");
-			console.error(err);
-		});
+	// 핵심: 상대경로 + POST
+	fetch("/myTwine/login.jsp", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded"
+		},
+		body: "id=" + encodeURIComponent(id) + "&pw=" + encodeURIComponent(pw)
+	})
+	.then(res => {
+		if (!res.ok) {
+			throw new Error("HTTP status " + res.status);
+		}
+		return res.json();
+	})
+	.then(data => {
+		if (data.ok) {
+			State.variables.isLogin = true;
+			Engine.play("MainMenu");
+		} else {
+			alert("로그인 실패");
+		}
+	})
+	.catch(err => {
+		alert("서버 연결 실패");
+		console.error(err);
+	});
 };
 <</script>>
 
@@ -67,8 +79,8 @@ window.doLogin = function () {
 <<if $hasSave>>
 	[[이어하기->LoadGame]]
 <<else>>
-	저장된 데이터가 없습니다.<br>
-	자동으로 새 게임을 시작합니다.<br><br>
+	저장된 데이터가 없습니다.
+	자동으로 새 게임을 시작합니다.<br>
 	[[시작->prologue]]
 <</if>>
 
@@ -78,7 +90,7 @@ window.doLogin = function () {
 다음 단계에서 구현 예정:
 
 fetch("/myTwine/loadGame.jsp")
-  .then(r => r.json())
+  .then(res => res.json())
   .then(data => {
     State.variables = data.state;
     Engine.play(data.lastPassage);
