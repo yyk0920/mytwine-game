@@ -15,7 +15,7 @@
 
 <br><br>
 
-<button onclick="mockLogin()">로그인</button>
+<button onclick="doLogin()">로그인</button>
 <br>
 [[회원가입->Signup]]
 
@@ -25,15 +25,45 @@
 :: StoryInit
 <<set $isLogin = false>>
 <<set $hasSave = false>>
+<<set $userId = null>>
 
 <<script>>
-window.mockLogin = function () {
-  State.variables.isLogin = true;
+window.doLogin = function () {
+  const id = document.getElementById("login_id").value;
+  const pw = document.getElementById("login_pw").value;
 
-  // mock: 저장 데이터 없음
-  State.variables.hasSave = false;
+  if (!id || !pw) {
+    alert("아이디와 비밀번호를 입력하세요.");
+    return;
+  }
 
-  Engine.play("MainMenu");
+  const formData = new URLSearchParams();
+  formData.append("id", id);
+  formData.append("pw", pw);
+
+  fetch("http://localhost:8080/mytwine-server/login.jsp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formData.toString()
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      State.variables.isLogin = true;
+      State.variables.userId = data.userId;
+      State.variables.hasSave = data.hasSave;
+
+      Engine.play("MainMenu");
+    } else {
+      alert("로그인 실패: 아이디 또는 비밀번호가 틀렸습니다.");
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert("서버 연결에 실패했습니다.");
+  });
 };
 <</script>>
 
