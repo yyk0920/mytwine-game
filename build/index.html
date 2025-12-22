@@ -364,28 +364,40 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 &lt;&lt;script&gt;&gt;
 window.doLogin = function () {
-	const id = document.getElementById(&quot;login_id&quot;).value;
-	const pw = document.getElementById(&quot;login_pw&quot;).value;
+	const id = document.getElementById(&quot;login_id&quot;).value.trim();
+	const pw = document.getElementById(&quot;login_pw&quot;).value.trim();
 
 	if (!id || !pw) {
 		alert(&quot;아이디와 비밀번호를 입력하세요.&quot;);
 		return;
 	}
 
-	fetch(&quot;/myTwine/login.jsp?id=&quot; + encodeURIComponent(id) + &quot;&amp;pw=&quot; + encodeURIComponent(pw))
-		.then(res =&gt; res.json())
-		.then(data =&gt; {
-			if (data.ok) {
-				State.variables.isLogin = true;
-				Engine.play(&quot;MainMenu&quot;);
-			} else {
-				alert(&quot;로그인 실패&quot;);
-			}
-		})
-		.catch(err =&gt; {
-			alert(&quot;서버 연결 실패&quot;);
-			console.error(err);
-		});
+	// 핵심: 상대경로 + POST
+	fetch(&quot;/myTwine/login.jsp&quot;, {
+		method: &quot;POST&quot;,
+		headers: {
+			&quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
+		},
+		body: &quot;id=&quot; + encodeURIComponent(id) + &quot;&amp;pw=&quot; + encodeURIComponent(pw)
+	})
+	.then(res =&gt; {
+		if (!res.ok) {
+			throw new Error(&quot;HTTP status &quot; + res.status);
+		}
+		return res.json();
+	})
+	.then(data =&gt; {
+		if (data.ok) {
+			State.variables.isLogin = true;
+			Engine.play(&quot;MainMenu&quot;);
+		} else {
+			alert(&quot;로그인 실패&quot;);
+		}
+	})
+	.catch(err =&gt; {
+		alert(&quot;서버 연결 실패&quot;);
+		console.error(err);
+	});
 };
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Signup" tags="" position="975,350" size="100,100">회원가입 기능은 추후 구현 예정입니다.
 
@@ -396,15 +408,15 @@ window.doLogin = function () {
 [[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="31" name="ContinueCheck" tags="" position="100,475" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
 	[[이어하기-&gt;LoadGame]]
 &lt;&lt;else&gt;&gt;
-	저장된 데이터가 없습니다.&lt;br&gt;
-	자동으로 새 게임을 시작합니다.&lt;br&gt;&lt;br&gt;
+	저장된 데이터가 없습니다.
+	자동으로 새 게임을 시작합니다.&lt;br&gt;
 	[[시작-&gt;prologue]]
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="LoadGame" tags="" position="225,475" size="100,100">&lt;&lt;script&gt;&gt;
 /*
 다음 단계에서 구현 예정:
 
 fetch(&quot;/myTwine/loadGame.jsp&quot;)
-  .then(r =&gt; r.json())
+  .then(res =&gt; res.json())
   .then(data =&gt; {
     State.variables = data.state;
     Engine.play(data.lastPassage);
