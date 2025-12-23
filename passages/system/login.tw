@@ -14,15 +14,27 @@
 
 <<script>>
 (function () {
-	// GitHub Pages 환경이면 로그인 자동 통과
+	// GitHub Pages 환경이면 로그인 스킵 모드로 전환
 	if (location.hostname.includes("github.io")) {
-		State.variables.isLogin = true;
-		Engine.play("MainMenu");
+		State.variables.isPagesMode = true;
 	}
 })();
 <</script>>
 
-<<if not location.hostname.includes("github.io")>>
+<<if $isPagesMode>>
+
+<p style="opacity:0.7; text-align:center;">
+GitHub Pages에서는 서버 기능이 제공되지 않습니다.<br>
+로그인 없이 게임을 진행할 수 있습니다.
+</p>
+
+<br>
+
+<div style="text-align:center;">
+	[[다음->PagesEnter]]
+</div>
+
+<<else>>
 
 아이디와 비밀번호를 입력하세요.<br><br>
 
@@ -32,13 +44,6 @@
 <button onclick="doLogin()">로그인</button><br><br>
 
 [[회원가입->Signup]]
-
-<<else>>
-
-<p style="opacity:0.7;">
-GitHub Pages에서는 서버 기능이 제공되지 않아<br>
-로그인 없이 게임이 진행됩니다.
-</p>
 
 <</if>>
 
@@ -82,6 +87,10 @@ window.doLogin = function () {
 	});
 };
 <</script>>
+
+:: PagesEnter
+<<set $isLogin = true>>
+[[게임 시작->MainMenu]]
 
 :: Signup
 회원가입 기능은 추후 구현 예정입니다.
