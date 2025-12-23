@@ -355,15 +355,27 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 &lt;&lt;script&gt;&gt;
 (function () {
-	// GitHub Pages 환경이면 로그인 자동 통과
+	// GitHub Pages 환경이면 로그인 스킵 모드로 전환
 	if (location.hostname.includes(&quot;github.io&quot;)) {
-		State.variables.isLogin = true;
-		Engine.play(&quot;MainMenu&quot;);
+		State.variables.isPagesMode = true;
 	}
 })();
 &lt;&lt;/script&gt;&gt;
 
-&lt;&lt;if not location.hostname.includes(&quot;github.io&quot;)&gt;&gt;
+&lt;&lt;if $isPagesMode&gt;&gt;
+
+&lt;p style=&quot;opacity:0.7; text-align:center;&quot;&gt;
+GitHub Pages에서는 서버 기능이 제공되지 않습니다.&lt;br&gt;
+로그인 없이 게임을 진행할 수 있습니다.
+&lt;/p&gt;
+
+&lt;br&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+	[[다음-&gt;PagesEnter]]
+&lt;/div&gt;
+
+&lt;&lt;else&gt;&gt;
 
 아이디와 비밀번호를 입력하세요.&lt;br&gt;&lt;br&gt;
 
@@ -373,13 +385,6 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;button onclick=&quot;doLogin()&quot;&gt;로그인&lt;/button&gt;&lt;br&gt;&lt;br&gt;
 
 [[회원가입-&gt;Signup]]
-
-&lt;&lt;else&gt;&gt;
-
-&lt;p style=&quot;opacity:0.7;&quot;&gt;
-GitHub Pages에서는 서버 기능이 제공되지 않아&lt;br&gt;
-로그인 없이 게임이 진행됩니다.
-&lt;/p&gt;
 
 &lt;&lt;/if&gt;&gt;
 
@@ -422,19 +427,20 @@ window.doLogin = function () {
 		alert(&quot;서버 연결 실패&quot;);
 	});
 };
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Signup" tags="" position="975,350" size="100,100">회원가입 기능은 추후 구현 예정입니다.
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="PagesEnter" tags="" position="975,350" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
+[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="29" name="Signup" tags="" position="1100,350" size="100,100">회원가입 기능은 추후 구현 예정입니다.
 
-[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="29" name="MainMenu" tags="" position="1100,350" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
+[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="30" name="MainMenu" tags="" position="1225,350" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
 
 (1) [[새 게임-&gt;NewGame]]  
-(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="30" name="NewGame" tags="" position="1225,350" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
-[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="31" name="ContinueCheck" tags="" position="100,475" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
+(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="31" name="NewGame" tags="" position="100,475" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
+[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="32" name="ContinueCheck" tags="" position="225,475" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
 	[[이어하기-&gt;LoadGame]]
 &lt;&lt;else&gt;&gt;
 	저장된 데이터가 없습니다.&lt;br&gt;
 	자동으로 새 게임을 시작합니다.&lt;br&gt;&lt;br&gt;
 	[[시작-&gt;prologue]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="LoadGame" tags="" position="225,475" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="LoadGame" tags="" position="350,475" size="100,100">&lt;&lt;script&gt;&gt;
 /*
 서버 구현 예정:
 
