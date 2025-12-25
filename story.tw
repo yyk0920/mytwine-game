@@ -28,7 +28,7 @@
 하지만, 그 결말은 오직 당신만이 정할 수 있습니다.
 당신의 선택으로 세상을 바꿔나가세요.
 
-[[계속->Setup_Difficultylevel]]
+[[계속->Setup_Ranklevel]]
 
 :: Setup_Ranklevel
 <<set $Rank = "">>
