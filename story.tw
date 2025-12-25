@@ -30,14 +30,14 @@
 
 [[계속->Setup_Difficultylevel]]
 
-:: Setup_Difficultylevel
-<<set $difficulty = "">>
+:: Setup_Ranklevel
+<<set $Rank = "">>
 
 <h2 style="margin:0;">초기 설정</h2>
 <h3 style="margin:0;">입궁 품계</h3>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "veryeasy">> 빈으로 입궁
+<<radiobutton "$Rank" "빈">> 빈으로 입궁
 </label>
 
 <p
@@ -56,7 +56,7 @@
 </p>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "easy">> 귀인으로 입궁
+<<radiobutton "$Rank" "귀인">> 귀인으로 입궁
 </label>
 
 <p
@@ -74,7 +74,7 @@
 </p>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "normal">> 어려움
+<<radiobutton "$Rank" "상재">> 상재로 입궁
 </label>
 
 <p
@@ -91,7 +91,7 @@
 당신의 친정 가문은 한미하여 당신에게 도움을 줄 순 없으나, 당신이 도와줄 만큼 가난에 허덕이진 않습니다.
 </p>
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "hard">> 답응으로 입궁
+<<radiobutton "$Rank" "답응">> 답응으로 입궁
 </label>
 
 <p
@@ -107,7 +107,7 @@
 도움을 받을 구석이 없는 당신에겐 황제의 총애만이 살 길입니다.
 </p>
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "veryhard">> 관여자로 입궁
+<<radiobutton "$Rank" "관여자">> 관여자로 입궁
 </label>
 
 <p
@@ -201,7 +201,10 @@
 <br>
 [[<<print $my_palace>>에 들어선다(임시)->PalaceHub]]
 
-[[<<print $my_palace>>에 들어서기 전 설명을 듣는다->explanation]]
+<<link "<<print $my_palace>>에 들어서기 전 설명을 듣는다">>
+  <<goto "explanation">>
+<</link>>
+
 
 /*
 추가해야 할 것
@@ -221,4 +224,6 @@
 배전의 경우에는 내전과 외전이 존재하지 않으며, 만약 당신보다 품계가 낮은 후궁이 당신의 궁에서 살게 된다면 <<print $my_palace>> 가장자리의 처소인 배전에서 기거하게 됩니다. 혹은 당신보다 품계가 높은 후궁과 살게 될 경우, 당신이 배전에서 살게 될 것입니다. 
 이때 품계가 가장 높아 후전에 기거하는 후궁은 해당 궁의 주인이 됩니다.
 
-[[<<print $my_palace>>에 들어선다(임시)->MyPalace]]
+<<link "<<print $my_palace>>에 들어선다(임시)">>
+  <<goto "MyPalace">>
+<</link>>

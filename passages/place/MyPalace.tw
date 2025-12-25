@@ -1,39 +1,61 @@
 :: MyPalace
 
-당신은 <<print $my_palace>>의 후전에 있습니다. 
-
-(1) [[전전으로 향한다->FrontPalace]]
-(2) [[잠자리에 든다->Sleep1]]
-(3) [[몸을 씻는다->Bath]]
+:: InnerPalace_Back
+:: OuterPalace_Back
+:: outside
 
 :: FrontPalace
 
-당신은 <<print $my_palace>>의 전전에 있습니다. 
+당신은 <<print $my_palace>> 전전의 입구에 있습니다. 
 
-(1) [[후전으로 향한다->BackPalace]]
-(2) [[궁 밖으로 나간다->Garden]]
-(3) [[여가 시간을 보낸다->Hobby]]
+(1) [[외실로 향한다->OuterPalace_Front]]
+(2) [[밖으로 향한다->outside]]
 
-:: BackPalace
+:: OuterPalace_Front
 
-:: Sleep1
+당신은 <<print $my_palace>> 전전의 외실에 있습니다.
 
-/*
+<<set $choices = [
+  { text: "내실로 향한다", target: "InnerPalace_Front" },
+  { text: "입구로 향한다", target: "MyPalace" },
+  { text: "여가 시간을 보낸다", target: "Hobby" },
+  { text: "누군가를 초대한다", target: "Invite" },
+  { text: "식사를 한다", target: "Eat" },
+  { text: "외관을 확인한다", target: "Mirror_Outer" }
+]>>
 
-2.
-:: MyRoom
+<<for _i, _c range $choices>>
+(<<print _i + 1>>)
+<<link _c.text>>
+  <<goto _c.target>>
+<</link>>
+<</for>>
 
-나의 처소다.
 
-(1) [[바로 잠든다->Sleep]]
-(2) [[잠들기 전 생각에 잠긴다->Think]]
-(3) [[다시 궁궐로 나간다->PalaceHub]]
+
+:: Hobby
+
+무엇을 하며 시간을 보낼까?
+
+
+
+
+:: InnerPalace_Front
+
+당신은 <<print $my_palace>> 전전의 내실에 있습니다.
+
+(1) [[외실로 향한다->OuterPalace_Front]]
+(2) [[잠에 든다->Sleep]]
+<!-- 잠에 든다의 경우 시간 기능을 만들고 시간대에 따라 잠/낮잠으로 토글-->
+(3) [[무언가를 곰곰이 생각한다->Think]]
+<!-- 생각한다의 경우 만들지말지 고민좀.. -->
+
 
 :: Sleep
 
-깊은 잠에 빠져든다.
+<!-- 내 피로도나 정신상태에 따라 문구 다르게 출력-->
 
-[[아침이 밝아온다->PalaceHub]]
+당신은 몸이 개운해지는 느낌과 함께 잠에서 깹니다. 
 
 :: Think
 
@@ -43,5 +65,31 @@
 
 [[결국 잠든다->Sleep]]
 
-*/
-:: Hobby
+
+
+
+
+
+
+
+:: BackPalace
+
+당신은 <<print $my_palace>> 후전의 입구에 있습니다. 
+
+(1) [[내실로 향한다->InnerPalace_Back]]
+(2) [[외실로 향한다->OuterPalace_Back]]
+
+당신은 <<print $my_palace>>의 전전에 있습니다. 
+
+(1) [[후전으로 향한다->BackPalace]]
+(2) [[궁 밖으로 나간다->Garden]]
+(3) [[여가 시간을 보낸다->Hobby]]
+
+
+:: Sleep1
+
+/*
+
+
+
+[[아침이 밝아온다->PalaceHub]]
