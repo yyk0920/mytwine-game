@@ -1,0 +1,112 @@
+:: PlayerInit
+<<if not $initDone>>
+	<<set $initDone = true>>
+<</if>>
+
+<!-- 난이도에 따른 스탯 -->
+
+<<if $difficulty is "veryeasy">>
+	<<set $knowledge = 110>>
+    <<set $music = 60>>
+    <<set $dance = 60>>
+    <<set $painting = 60>>
+    <<set $social = 120>>
+    <<set $stamina = 100>>
+    <<set $faith = 10>>
+    <<set $handSkills = 30>>
+    <<set $riding = 20>>
+    <<set $medicine = 20>>
+    <<set $charm = 30>>
+    <<set $foreginLang = 0>>
+    <<set $farming = 0>>
+    <<set $strategy = 40>>
+    <<set $beauty = 30>>
+    <<set $politics = 90>>
+    <<set $morality = 50>>
+    <<set $attention = 15>>
+
+    <<elseif $difficulty is "easy">>
+        <<set $knowledge = 25>>
+        <<set $music = 50>>
+        <<set $dance = 30>>
+        <<set $painting = 20>>
+        <<set $social = 80>>
+        <<set $stamina = 150>>
+        <<set $faith = 10>>
+        <<set $handSkills = 75>>
+        <<set $riding = 15>>
+        <<set $medicine = 20>>
+        <<set $charm = 25>>
+        <<set $foreginLang= 0>>
+        <<set $farming = 0>>
+        <<set $strategy = 30>>
+        <<set $beauty = 30>>
+        <<set $politics = 20>>
+        <<set $morality = 100>>
+        <<set $attention = 10>>
+
+    <<elseif $difficulty is "normal">>
+        <<set $knowledge = 15>>
+        <<set $music = 20>>
+        <<set $dance = 40>>
+        <<set $painting = 35>>
+        <<set $social = 15>>
+        <<set $stamina = 150>>
+        <<set $faith = 10>>
+        <<set $handSkills = 90>>
+        <<set $riding = 10>>
+        <<set $medicine = 5>>
+        <<set $charm = 110>>
+        <<set $foreginLang= 0>>
+        <<set $farming = 0>>
+        <<set $strategy = 65>>
+        <<set $beauty = 40>>
+        <<set $politics = 5>>
+        <<set $morality = 45>>
+        <<set $attention = 5>>
+
+    <<elseif $difficulty is "hard">>
+        <<set $knowledge = 30>>
+        <<set $music = 70>>
+        <<set $dance = 55>>
+        <<set $painting = 10>>
+        <<set $social = 10>>
+        <<set $stamina = 150>>
+        <<set $faith = 10>>
+        <<set $handSkills = 60>>
+        <<set $riding = 5>>
+        <<set $medicine = 5>>
+        <<set $charm = 90>>
+        <<set $foreginLang= 0>>
+        <<set $farming = 0>>
+        <<set $strategy = 10>>
+        <<set $beauty = 35>>
+        <<set $politics = 5>>
+        <<set $morality = 30>>
+        <<set $attention = 0>>
+
+    <<else>>
+        <<set $knowledge = 0>>
+        <<set $music = 30>>
+        <<set $dance = 35>>
+        <<set $painting = 0>>
+        <<set $social = 0>>
+        <<set $stamina = 200>>
+        <<set $faith = 10>>
+        <<set $handSkills = 150>>
+        <<set $riding = 0>>
+        <<set $medicine = 5>>
+        <<set $charm = 100>>
+        <<set $foreginLang= 0>>
+        <<set $farming = 0>>
+        <<set $strategy = 0>>
+        <<set $beauty = 50>>
+        <<set $politics = 0>>
+        <<set $morality = 15>>
+        <<set $attention = 20>>
+<</if>>
+
+<<if $my_palace is "naniegung">>
+<!--- 다른 이들과의 관계: 가까운 위치일수록 먼저 친해지고 시작>
+<!-- 위치에 따라 주목도 가감>
+<</if>>

@@ -1,0 +1,57 @@
+<!-- 능력치 변수 선언 -->
+
+<<set $knowledge = 0>> 
+<<set $music = 0>> 
+<<set $dance = 0>>
+<<set $painting = 0>>
+<<set $social = 0>>
+<<set $stamina = 0>>
+<<set $faith = 0>>
+<<set $handSkills = 0>>
+<<set $riding = 0>>
+<<set $medicine = 0>>
+<<set $charm = 0>>
+<<set $foreginLang= 0>>
+<<set $farming = 0>>
+<<set $strategy = 0>>
+<<set $beauty = 0>>
+<<set $politics = 0>>
+<<set $morality = 0>>
+
+<!-- 상태 변수 선언 -->
+
+<<set $mental = 100>>
+<<set $fatigue = 0>>
+<<set $illness= 0>>
+<<set $attention = 0>>
+<<set $danger = 0>>
+
+<!-- 태도 변수 선언 -->
+
+<<set $sensibility_pos = 0>>
+<<set $sensibility_neg = 0>>
+<<set $sensibilityConrtol = 0>>
+
+<<set $hostility_pos = 0>>
+<<set $hostility_neg = 0>>
+<<set $hostilityControl = 0>>
+
+<<set $impulse_pos = 0>>
+<<set $impulse_neg = 0>>
+<<set $impulseControl = 0>>
+
+<<set $malice_pos = 0>>
+<<set $malice_neg = 0>>
+<<set $maliceControl = 0>>
+
+<<set $openness_pos = 0>>
+<<set $openness_neg = 0>>
+<<set $opennessControl = 0>>
+
+<<set $defiance_pos = 0>>
+<<set $defiance_neg = 0>>
+<<set $defianceControl = 0>>
+
+<<set $emotion_pos = 0>>
+<<set $emotion_neg = 0>>
+<<set $emotionControl = 0>>
