@@ -135,7 +135,7 @@
 <h3 style="margin:0;">입궁 거처</h3>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$my_palace" "naniegung">> 난의궁으로 입궁
+<<radiobutton "$my_palace" "난의궁">> 난의궁으로 입궁
 </label>
 
 <p
@@ -156,7 +156,7 @@
 </p>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$my_palace" "yeonhuigung">> 연희궁으로 입궁
+<<radiobutton "$my_palace" "연희궁">> 연희궁으로 입궁
 </label>
 
 <p
@@ -177,7 +177,7 @@
 </p>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$my_palace" "jeonghwagung">> 정화궁으로 입궁
+<<radiobutton "$my_palace" "정화궁">> 정화궁으로 입궁
 </label>
 
 <p
