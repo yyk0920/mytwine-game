@@ -199,18 +199,9 @@
 </p>
 
 <br>
+[[황궁에 들어선다(임시)->PalaceHub]]
 
-
-<<set _enterPalace = $my_palace + "에 들어선다(임시)">>
-<<set _explainPalace = $my_palace + "에 들어서기 전 설명을 듣는다">>
-
-<<link _enterPalace>>
-  <<goto "PalaceHub">>
-<</link>>
-
-<<link _explainPalace>>
-  <<goto "explanation">>
-<</link>>
+[[황궁에 들어서기 전 설명을 듣는다->explanation]]
 
 
 /*
@@ -231,8 +222,4 @@
 배전의 경우에는 내전과 외전이 존재하지 않으며, 만약 당신보다 품계가 낮은 후궁이 당신의 궁에서 살게 된다면 <<print $my_palace>> 가장자리의 처소인 배전에서 기거하게 됩니다. 혹은 당신보다 품계가 높은 후궁과 살게 될 경우, 당신이 배전에서 살게 될 것입니다. 
 이때 품계가 가장 높아 후전에 기거하는 후궁은 해당 궁의 주인이 됩니다.
 
-<<set __enterPalace = $my_palace + "에 들어선다(임시)">>
-
-<<link __enterPalace>>
-  <<goto "MyPalace">>
-<</link>>
+[[<<print $my_palace>>에 들어선다->MyPalace]]
