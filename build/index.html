@@ -434,26 +434,16 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 (1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="49" name="Observe_DanAeng" tags="" position="1100,600" size="100,100">분위기를 살폈다.
 
-(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryInterface" tags="" position="1225,600" size="100,100">&lt;div id=&quot;ui-bar&quot; style=&quot;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 220px;
-	height: 100%;
-	background: #111;
-	color: #ccc;
-	padding: 12px;
-	box-sizing: border-box;
-	font-size: 0.9em;
+(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryCaption" tags="" position="1225,600" size="100,100">&lt;span style=&quot;
+	font-size: 0.85em;
+	color: #888;
 &quot;&gt;
-	&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;&lt;br&gt;
-	Day &lt;&lt;print $day&gt;&gt;&lt;br&gt;
-	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&quot;0&quot;)&gt;&gt;&lt;br&gt;
+	Day &lt;&lt;print $day&gt;&gt;
+	｜
+	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&quot;0&quot;)&gt;&gt;
+	｜
 	&lt;&lt;print $season&gt;&gt;
-&lt;/div&gt;
-
-&lt;!-- 이게 없으면 게임이 안 켜짐 --&gt;
-&lt;div id=&quot;passages&quot; style=&quot;margin-left:220px;&quot;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="startup" position="100,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
+&lt;/span&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="startup" position="100,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
 &lt;&lt;set $hour = 8&gt;&gt;
 &lt;&lt;set $minute = 0&gt;&gt;
 &lt;&lt;set $season = &quot;spring&quot;&gt;&gt;
