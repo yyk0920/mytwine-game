@@ -434,11 +434,14 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 (1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="49" name="Observe_DanAeng" tags="" position="1100,600" size="100,100">분위기를 살폈다.
 
-(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryMenu" tags="" position="1225,600" size="100,100">&lt;&lt;if $day is defined&gt;&gt;
-&lt;div style=&quot;font-size:0.8em; line-height:1.4; color:#ccc;&quot;&gt;
+(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryMenu" tags="" position="1225,600" size="100,100">&lt;&lt;if $day !== undefined&gt;&gt;
+&lt;div style=&quot;
+	line-height:1.4;
+	color:#ccc;
+&quot;&gt;
 	&lt;b&gt;시간&lt;/b&gt;
-	Day &lt;&lt;print $day&gt;&gt;
-	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&quot;0&quot;)&gt;&gt;
+	Day &lt;&lt;print $day&gt;&gt;&lt;br&gt;
+	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&#39;0&#39;)&gt;&gt;&lt;br&gt;
 	&lt;&lt;print $season&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="" position="100,725" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
