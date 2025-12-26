@@ -1,9 +1,12 @@
 :: StoryMenu
-<<if $day is defined>>
-<div style="font-size:0.8em; line-height:1.4; color:#ccc;">
+<<if $day !== undefined>>
+<div style="
+	line-height:1.4;
+	color:#ccc;
+">
 	<b>시간</b>
-	Day <<print $day>>
-	<<print $hour>>:<<print String($minute).padStart(2,"0")>>
+	Day <<print $day>><br>
+	<<print $hour>>:<<print String($minute).padStart(2,'0')>><br>
 	<<print $season>>
 </div>
 <</if>>
