@@ -346,12 +346,18 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="GardenRest" tags="" position="1100,225" size="100,100">연못가에 앉아 쉰다.  
 잠시 시간을 보낸다.
 
-(1) [[이만 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="20" name="MyPalace" tags="" position="1225,225" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt;에 도착했습니다. 
+(1) [[이만 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="20" name="MyPalace" tags="" position="1225,225" size="100,100">&lt;&lt;showTime&gt;&gt;
 
-[[다음-&gt;FrontPalace]]</tw-passagedata><tw-passagedata pid="21" name="FrontPalace" tags="" position="100,350" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 입구에 있습니다. 
+당신은 &lt;&lt;print $my_palace&gt;&gt;에 도착했습니다. 
+
+[[다음-&gt;FrontPalace]]</tw-passagedata><tw-passagedata pid="21" name="FrontPalace" tags="" position="100,350" size="100,100">&lt;&lt;showTime&gt;&gt;
+
+당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 입구에 있습니다. 
 
 [[외실로 향한다-&gt;OuterPalace_Front]]
-[[밖으로 향한다-&gt;outside]]</tw-passagedata><tw-passagedata pid="22" name="OuterPalace_Front" tags="" position="225,350" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 외실에 있습니다.
+[[밖으로 향한다-&gt;outside]]</tw-passagedata><tw-passagedata pid="22" name="OuterPalace_Front" tags="" position="225,350" size="100,100">&lt;&lt;showTime&gt;&gt;
+
+당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 외실에 있습니다.
 
   [[내실로 향한다-&gt;InnerPalace_Front]]
   [[입구로 향한다-&gt;FrontPalace]]
@@ -439,12 +445,27 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 (1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="49" name="Observe_DanAeng" tags="" position="1100,600" size="100,100">분위기를 살폈다.
 
-(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryInit" tags="" position="1225,600" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
-&lt;&lt;set $hasSave = false&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="LoginCheck" tags="" position="100,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
+(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryInterface" tags="" position="1225,600" size="100,100">&lt;div style=&quot;
+	padding:10px;
+	font-size:0.9em;
+	color:#ccc;
+	border-bottom:1px solid #444;
+&quot;&gt;
+
+&lt;strong&gt;시간&lt;/strong&gt;&lt;br&gt;
+Day &lt;&lt;print $day&gt;&gt;&lt;br&gt;
+&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&quot;0&quot;)&gt;&gt;&lt;br&gt;
+&lt;&lt;print $season&gt;&gt;
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="startup" position="100,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
+&lt;&lt;set $hour = 8&gt;&gt;
+&lt;&lt;set $minute = 0&gt;&gt;
+&lt;&lt;set $season = &quot;spring&quot;&gt;&gt;
+&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="LoginCheck" tags="" position="225,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
 	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
 	[[계속-&gt;Login]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="Login" tags="" position="225,725" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="Login" tags="" position="350,725" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
 
 &lt;&lt;script&gt;&gt;
 (function () {
@@ -520,20 +541,20 @@ window.doLogin = function () {
 		alert(&quot;서버 연결 실패&quot;);
 	});
 };
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="53" name="PagesEnter" tags="" position="350,725" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
-[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="54" name="Signup" tags="" position="475,725" size="100,100">회원가입 기능은 추후 구현 예정입니다.
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="PagesEnter" tags="" position="475,725" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
+[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="55" name="Signup" tags="" position="600,725" size="100,100">회원가입 기능은 추후 구현 예정입니다.
 
-[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="55" name="MainMenu" tags="" position="600,725" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
+[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="56" name="MainMenu" tags="" position="725,725" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
 
 (1) [[새 게임-&gt;NewGame]]  
-(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="56" name="NewGame" tags="" position="725,725" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
-[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="57" name="ContinueCheck" tags="" position="850,725" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
+(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="57" name="NewGame" tags="" position="850,725" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
+[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="58" name="ContinueCheck" tags="" position="975,725" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
 	[[이어하기-&gt;LoadGame]]
 &lt;&lt;else&gt;&gt;
 	저장된 데이터가 없습니다.&lt;br&gt;
 	자동으로 새 게임을 시작합니다.&lt;br&gt;&lt;br&gt;
 	[[시작-&gt;prologue]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="LoadGame" tags="" position="975,725" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="LoadGame" tags="" position="1100,725" size="100,100">&lt;&lt;script&gt;&gt;
 /*
 서버 구현 예정:
 
@@ -546,7 +567,7 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 */
 &lt;&lt;/script&gt;&gt;
 
-[[계속-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="59" name="PlayerInit" tags="" position="1100,725" size="100,100">&lt;&lt;if not $initDone&gt;&gt;
+[[계속-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="60" name="PlayerInit" tags="" position="1225,725" size="100,100">&lt;&lt;if not $initDone&gt;&gt;
 	&lt;&lt;set $initDone = true&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -656,18 +677,7 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 &lt;&lt;if $my_palace is &quot;naniegung&quot;&gt;&gt;
 &lt;!--- 다른 이들과의 관계: 가까운 위치일수록 먼저 친해지고 시작&gt;
 &lt;!-- 위치에 따라 주목도 가감&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="PlayerSetting" tags="" position="1225,725" size="100,100">&lt;!-- 근데 이 파일이 필요한지 잘 모르겠다 일단 보류 --&gt;</tw-passagedata><tw-passagedata pid="61" name="Time" tags="startup" position="100,850" size="100,100">/* 날짜 */
-&lt;&lt;set $day = 1&gt;&gt;
-
-/* 시간 */
-&lt;&lt;set $hour = 8&gt;&gt;    /* 0 ~ 23 */
-&lt;&lt;set $minute = 0&gt;&gt;  /* 0 ~ 59 */
-
-/* 계절 */
-&lt;&lt;set $season = &quot;spring&quot;&gt;&gt;
-
-/* 기타 */
-&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="TimeSystem" tags="widget" position="225,850" size="100,100">&lt;&lt;widget &quot;addTime&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="PlayerSetting" tags="" position="100,850" size="100,100">&lt;!-- 근데 이 파일이 필요한지 잘 모르겠다 일단 보류 --&gt;</tw-passagedata><tw-passagedata pid="62" name="TimeSystem" tags="widget" position="225,850" size="100,100">&lt;&lt;widget &quot;addTime&quot;&gt;&gt;
 &lt;&lt;set _addMin = $args[0]&gt;&gt;
 
 &lt;&lt;set $minute += _addMin&gt;&gt;
@@ -691,18 +701,16 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 &lt;&lt;else&gt;&gt;
     &lt;&lt;set $season = &quot;winter&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="TimeUI" tags="widget" position="475,850" size="100,100">&lt;&lt;widget &quot;showTime&quot;&gt;&gt;
-&lt;span style=&quot;
-	font-size:0.9em;
-	color:#666;
-	float:right;
-&quot;&gt;
+&lt;&lt;if $day isnot undefined and $hour isnot undefined and $minute isnot undefined&gt;&gt;
+&lt;span style=&quot;float:right; font-size:0.9em; color:#666;&quot;&gt;
 	Day &lt;&lt;print $day&gt;&gt;
 	｜
-	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print $minute.toString().padStart(2,&quot;0&quot;)&gt;&gt;
+	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&quot;0&quot;)&gt;&gt;
 	｜
 	&lt;&lt;print $season&gt;&gt;
 &lt;/span&gt;
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */

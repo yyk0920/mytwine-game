@@ -1,12 +1,10 @@
 :: MyPalace
-<<showTime>>
 
 당신은 <<print $my_palace>>에 도착했습니다. 
 
 [[다음->FrontPalace]]
 
 :: FrontPalace
-<<showTime>>
 
 당신은 <<print $my_palace>> 전전의 입구에 있습니다. 
 
@@ -14,7 +12,6 @@
 [[밖으로 향한다->outside]]
 
 :: OuterPalace_Front
-<<showTime>>
 
 당신은 <<print $my_palace>> 전전의 외실에 있습니다.
 
@@ -27,7 +24,6 @@
   [[외관을 확인한다->Mirror_Outer]]
 
 :: Hobby
-<<showTime>>
 
 무엇을 하며 시간을 보낼까?
 

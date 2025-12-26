@@ -35,19 +35,3 @@
 <<else>>
     <<set $season = "winter">>
 <</if>>
-
-
-:: TimeUI [widget]
-
-<<widget "showTime">>
-<<if $day isnot undefined and $hour isnot undefined and $minute isnot undefined>>
-<span style="float:right; font-size:0.9em; color:#666;">
-	Day <<print $day>>
-	｜
-	<<print $hour>>:<<print String($minute).padStart(2,"0")>>
-	｜
-	<<print $season>>
-</span>
-<div style="clear:both;"></div>
-<</if>>
-<</widget>>
