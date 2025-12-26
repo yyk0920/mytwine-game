@@ -24,6 +24,7 @@
   [[외관을 확인한다->Mirror_Outer]]
 
 :: Hobby
+<<showTime>>
 
 무엇을 하며 시간을 보낼까?
 
@@ -34,7 +35,6 @@
 [[자수를 놓는다->Embroidery]]
 
 :: Book
-ㅇ
 <<addTime 60>> /*한시간*/
 
 <<set _roll = random(1, 100)>>

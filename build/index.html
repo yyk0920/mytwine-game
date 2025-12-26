@@ -306,7 +306,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 &lt;&lt;link _linkText&gt;&gt;
   &lt;&lt;goto &quot;MyPalace&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Book_Normal" tags="" position="725,100" size="100,100">평범한 독서</tw-passagedata><tw-passagedata pid="7" name="Book_GoodEvent" tags="" position="850,100" size="100,100">기분?이나 컨디션 좋아짐 스트레스-느낌</tw-passagedata><tw-passagedata pid="8" name="Book_BadEvent" tags="" position="975,100" size="100,100">책읽다가 안좋은걸 봣다던지..그런거</tw-passagedata><tw-passagedata pid="9" name="GardenEvent_1" tags="" position="1100,100" size="100,100">50퍼
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Book_Normal" tags="" position="725,100" size="100,100">&lt;&lt;showTime&gt;&gt;
+평범한 독서</tw-passagedata><tw-passagedata pid="7" name="Book_GoodEvent" tags="" position="850,100" size="100,100">&lt;&lt;showTime&gt;&gt;
+기분?이나 컨디션 좋아짐 스트레스-느낌</tw-passagedata><tw-passagedata pid="8" name="Book_BadEvent" tags="" position="975,100" size="100,100">&lt;&lt;showTime&gt;&gt;
+책읽다가 안좋은걸 봣다던지..그런거</tw-passagedata><tw-passagedata pid="9" name="GardenEvent_1" tags="" position="1100,100" size="100,100">50퍼
 &lt;br&gt;
 
 [[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="10" name="GardenEvent_2" tags="" position="1225,100" size="100,100">30퍼
@@ -362,7 +365,25 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 [[악기 연주를 한다-&gt;Musical_Instrument]]
 [[무용을 연습한다-&gt;Dance]]
 [[그림을 그린다-&gt;Painting]]
-[[자수를 놓는다-&gt;Embroidery]]</tw-passagedata><tw-passagedata pid="24" name="Book" tags="" position="475,350" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="25" name="Musical_Instrument" tags="" position="600,350" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="26" name="Dance" tags="" position="725,350" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="27" name="Painting" tags="" position="850,350" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="28" name="Embroidery" tags="" position="975,350" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="29" name="Invite" tags="" position="1100,350" size="100,100">누구를 초대할까?</tw-passagedata><tw-passagedata pid="30" name="Eat" tags="" position="1225,350" size="100,100">식사는 식사 시간에만 토글되게 할까?</tw-passagedata><tw-passagedata pid="31" name="Tea" tags="" position="100,475" size="100,100">티타임</tw-passagedata><tw-passagedata pid="32" name="Mirror_Outer" tags="" position="225,475" size="100,100">거울아거울아</tw-passagedata><tw-passagedata pid="33" name="InnerPalace_Front" tags="" position="350,475" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 내실에 있습니다.
+[[자수를 놓는다-&gt;Embroidery]]</tw-passagedata><tw-passagedata pid="24" name="Book" tags="" position="475,350" size="100,100">ㅇ
+&lt;&lt;addTime 60&gt;&gt; /*한시간*/
+
+&lt;&lt;set _roll = random(1, 100)&gt;&gt;
+
+&lt;&lt;if _roll &lt;= 70&gt;&gt;
+  &lt;&lt;goto &quot;Book_Normal&quot;&gt;&gt;
+&lt;&lt;elseif _roll &lt;= 90&gt;&gt;
+  &lt;&lt;goto &quot;Book_GoodEvent&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  &lt;&lt;goto &quot;Book_BadEvent&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Musical_Instrument" tags="" position="600,350" size="100,100">ㅇ
+&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Dance" tags="" position="725,350" size="100,100">ㅇ
+&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Painting" tags="" position="850,350" size="100,100">ㅇ
+&lt;&lt;addTime 30&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Embroidery" tags="" position="975,350" size="100,100">ㅇ
+&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Invite" tags="" position="1100,350" size="100,100">누구를 초대할까?</tw-passagedata><tw-passagedata pid="30" name="Eat" tags="" position="1225,350" size="100,100">식사는 식사 시간에만 토글되게 할까? 
+&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Tea" tags="" position="100,475" size="100,100">티타임
+&lt;&lt;addTime 15&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="Mirror_Outer" tags="" position="225,475" size="100,100">거울아거울아
+&lt;&lt;addTime 5&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="InnerPalace_Front" tags="" position="350,475" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 내실에 있습니다.
 
 [[외실로 향한다-&gt;OuterPalace_Front]]
 [[몸을 씻는다-&gt;Bath]]
