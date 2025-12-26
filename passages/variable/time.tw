@@ -1,0 +1,44 @@
+:: Time [startup]
+
+/* 날짜 */
+<<set $day = 1>>
+
+/* 시간 */
+<<set $hour = 8>>    /* 0 ~ 23 */
+<<set $minute = 0>>  /* 0 ~ 59 */
+
+/* 계절 */
+<<set $season = "spring">>
+
+/* 기타 */
+<<set $isSleeping = false>>
+
+:: TimeSystem [widget]
+
+<<widget "addTime">>
+    <<set _addMin = $args[0]>>
+
+    <<set $minute += _addMin>>
+
+    <<while $minute >= 60>>
+        <<set $minute -= 60>>
+        <<set $hour += 1>>
+    <</while>>
+
+    <<while $hour >= 24 >>
+        <<set $hour -= 24>>
+        <<set $day += 1>>
+        <<run Engine.play("CheckSeason")>>
+    <</while>>
+<</widget>>
+
+:: CheckSeason
+<<if $day <= 30>>
+    <<set $season = "spring">>
+<<elseif $day <=60>>
+    <<set $season = "summer">>
+<<elseif $day <= 90>>
+    <<set $season = "autumn">>
+<<else>>
+    <<set $season = "winter">>
+<</if>>

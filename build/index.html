@@ -321,20 +321,21 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 (1) [[조용히 산책한다-&gt;GardenWalk]]
 (2) [[연못가에 앉아 쉰다-&gt;GardenRest]]
-(3) [[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="10" name="GardenWalk" tags="" position="1225,100" size="100,100">&lt;&lt;set _roll = random(1, 5)&gt;&gt;
+(3) [[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="10" name="GardenWalk" tags="" position="1225,100" size="100,100">&lt;&lt;set _roll = random(1, 100)&gt;&gt;
 
-&lt;&lt;switch _roll&gt;&gt;
-&lt;&lt;case 1&gt;&gt;
-    &lt;&lt;goto &quot;GardenEvent_1&quot;&gt;&gt;
-&lt;&lt;case 2&gt;&gt;
-    &lt;&lt;goto &quot;GardenEvent_2&quot;&gt;&gt;
-&lt;&lt;case 3&gt;&gt;
-    &lt;&lt;goto &quot;GardenEvent_3&quot;&gt;&gt;
-&lt;&lt;case 4&gt;&gt;
-    &lt;&lt;goto &quot;GardenEvent_4&quot;&gt;&gt;
-&lt;&lt;case 5&gt;&gt;
-    &lt;&lt;goto &quot;GardenEvent_5&quot;&gt;&gt;
-&lt;&lt;/switch&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="GardenRest" tags="" position="100,225" size="100,100">앉아서 쉰다.
+&lt;&lt;if _roll &lt;= 50&gt;&gt;
+	&lt;&lt;goto &quot;GardenEvent_1&quot;&gt;&gt;   /* 50% */
+&lt;&lt;elseif _roll &lt;= 80&gt;&gt;
+	&lt;&lt;goto &quot;GardenEvent_2&quot;&gt;&gt;   /* 30% */
+&lt;&lt;elseif _roll &lt;= 90&gt;&gt;
+	&lt;&lt;goto &quot;GardenEvent_3&quot;&gt;&gt;   /* 10% */
+&lt;&lt;elseif _roll &lt;= 95&gt;&gt;
+	&lt;&lt;goto &quot;GardenEvent_4&quot;&gt;&gt;   /* 5% */
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;goto &quot;GardenEvent_5&quot;&gt;&gt;   /* 5% */
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="GardenRest" tags="" position="100,225" size="100,100">연못가에 앉아 쉰다.  
+잠시 시간을 보낸다.
+
 (1) [[이만 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="12" name="MyPalace" tags="" position="225,225" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt;에 도착했습니다. 
 
 [[다음-&gt;FrontPalace]]</tw-passagedata><tw-passagedata pid="13" name="FrontPalace" tags="" position="350,225" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 입구에 있습니다. 
