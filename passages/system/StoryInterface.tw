@@ -1,54 +1,13 @@
-:: StoryInterface
-<!-- 기본 SugarCube UI 유지 + 시간 패널만 추가 -->
-
-<style>
-#time-panel {
-	margin-top: 1em;
-	padding: 0.6em;
-	border: 1px solid #333;
-	background: #111;
-	color: #ccc;
+:: StoryMenu
+<div style="
 	font-size: 1.0em;
 	line-height: 1.4;
-}
-</style>
+	color: #ccc;
+">
 
-<script>
-(function () {
-	function injectTimePanel() {
-		const ui = document.getElementById("ui-bar");
-		if (!ui) {
-			setTimeout(injectTimePanel, 100);
-			return;
-		}
+<b>시간</b><br>
+Day <<print $day>><br>
+<<print $hour>>:<<print $minute.toString().padStart(2, '0')>><br>
+<<print $season>>
 
-		if (document.getElementById("time-panel")) return;
-
-		const panel = document.createElement("div");
-		panel.id = "time-panel";
-		ui.appendChild(panel);
-
-		updateTimePanel();
-	}
-
-	function updateTimePanel() {
-		if (!window.State) return;
-		const V = State.variables;
-		const panel = document.getElementById("time-panel");
-		if (!panel || V.day == null) return;
-
-		panel.innerHTML = `
-			<b>시간</b><br>
-			Day ${V.day}<br>
-			${V.hour}:${String(V.minute).padStart(2,"0")}<br>
-			${V.season}
-		`;
-	}
-
-	$(document).on(":passageend", updateTimePanel);
-	injectTimePanel();
-})();
-</script>
-
-<!-- ⚠️ 이거 없으면 게임 절대 안 켜짐 -->
-<div id="passages"></div>
+</div>
