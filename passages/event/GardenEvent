@@ -1,0 +1,40 @@
+:: GardenEvent_1
+정원을 걸으며 생각을 정리한다.
+<br>
+
+[[궁궐로 돌아간다->PalaceHub]]
+
+:: GardenEvent_2
+궁인들이 정원을 정리하며 당신에 대해 떠들고 있다.
+<br>
+
+[[조용히 지나간다->GardenEvent_2_A]]
+[[말을 건다->GardenEvent_2_B]]
+
+:: GardenEvent_2_A
+말을 하지 않고 지나간다.
+정원은 다시 조용해진다.
+<br>
+[[궁궐로 돌아간다->PalaceHub]]
+
+:: GardenEvent_2_B
+말을 걸었다.
+<br>
+[[궁궐로 돌아간다->PalaceHub]]
+
+:: GardenEvent_3
+연못 위에 비친 자신의 모습을 바라본다.
+<br>
+[[궁궐로 돌아간다->PalaceHub]]
+
+:: GardenEvent_4
+정원 한편에서 누군가 급히 자리를 피한다.
+별일 아닐지도 모른다.
+<br>
+[[궁궐로 돌아간다.->PalaceHub]]
+
+:: GardenEvent_5
+특별한 일은 없었다.
+그냥 정원을 천천히 한바퀴 돌았다.
+<br>
+[[궁궐로 돌아간다->PalaceHub]]
