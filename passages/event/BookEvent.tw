@@ -1,8 +1,11 @@
 :: Book_Normal
+<<showTime>>
 평범한 독서
 
 :: Book_GoodEvent
+<<showTime>>
 기분?이나 컨디션 좋아짐 스트레스-느낌
 
 :: Book_BadEvent
+<<showTime>>
 책읽다가 안좋은걸 봣다던지..그런거

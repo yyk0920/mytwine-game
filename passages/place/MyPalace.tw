@@ -35,18 +35,33 @@
 
 :: Book
 ㅇ
+<<addTime 60>> /*한시간*/
+
+<<set _roll = random(1, 100)>>
+
+<<if _roll <= 70>>
+  <<goto "Book_Normal">>
+<<elseif _roll <= 90>>
+  <<goto "Book_GoodEvent">>
+<<else>>
+  <<goto "Book_BadEvent">>
+<</if>>
 
 :: Musical_Instrument
 ㅇ
+<<addTime 60>>
 
 :: Dance
 ㅇ
+<<addTime 60>>
 
 :: Painting
 ㅇ
+<<addTime 30>>
 
 :: Embroidery
 ㅇ
+<<addTime 60>>
 
 :: Invite
 
@@ -54,14 +69,17 @@
 
 :: Eat
 
-식사는 식사 시간에만 토글되게 할까?
+식사는 식사 시간에만 토글되게 할까? 
+<<addTime 60>>
 
 :: Tea
 티타임
+<<addTime 15>>
 
 :: Mirror_Outer
 
 거울아거울아
+<<addTime 5>>
 
 :: InnerPalace_Front
 
