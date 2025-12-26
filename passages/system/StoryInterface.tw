@@ -1,63 +1,21 @@
-:: StoryInterface
-<style>
-#ui-bar {
+:: StoryStylesheet [stylesheet]
+#left-info {
 	position: fixed;
-	left: 0;
-	top: 0;
-	width: 260px;
-	height: 100%;
-	background: #111;
+	left: 10px;
+	top: 80px;
+	width: 200px;
+	padding: 10px;
+	background: rgba(0,0,0,0.6);
 	color: #ccc;
-	padding: 12px;
-	box-sizing: border-box;
-	font-size: 0.85em;
-	overflow-y: auto;
-	border-right: 1px solid #333;
+	font-size: 0.8em;
+	border: 1px solid #333;
+	z-index: 1000;
 }
 
-#passages {
-	margin-left: 260px;
-	padding: 20px;
-}
-.stat {
-	margin-bottom: 4px;
-}
-.stat span {
-	float: right;
-	color: #9ad;
-}
-hr {
-	border: none;
-	border-top: 1px solid #333;
-	margin: 8px 0;
-}
-</style>
-
-<div id="ui-bar">
+:: StoryCaption
+<div id="left-info">
 	<b>시간</b><br>
 	Day <<print $day>><br>
 	<<print $hour>>:<<print String($minute).padStart(2,"0")>><br>
 	<<print $season>>
-
-	<hr>
-
-	<button onclick="UIBar.toggle()">UI 접기</button>
 </div>
-
-<div id="passages"></div>
-
-<script>
-window.UIBar = {
-	toggle() {
-		const bar = document.getElementById("ui-bar");
-		const p = document.getElementById("passages");
-		if (bar.style.display === "none") {
-			bar.style.display = "block";
-			p.style.marginLeft = "260px";
-		} else {
-			bar.style.display = "none";
-			p.style.marginLeft = "0";
-		}
-	}
-};
-</script>

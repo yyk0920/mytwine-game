@@ -434,20 +434,69 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 (1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="49" name="Observe_DanAeng" tags="" position="1100,600" size="100,100">분위기를 살폈다.
 
-(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryCaption" tags="" position="1225,600" size="100,100">&lt;span style=&quot;
+(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryInterface" tags="" position="1225,600" size="100,100">&lt;style&gt;
+#ui-bar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 260px;
+	height: 100%;
+	background: #111;
+	color: #ccc;
+	padding: 12px;
+	box-sizing: border-box;
 	font-size: 0.85em;
-	color: #888;
-&quot;&gt;
-	Day &lt;&lt;print $day&gt;&gt;
-	｜
-	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&quot;0&quot;)&gt;&gt;
-	｜
+	overflow-y: auto;
+	border-right: 1px solid #333;
+}
+
+#passages {
+	margin-left: 260px;
+	padding: 20px;
+}
+.stat {
+	margin-bottom: 4px;
+}
+.stat span {
+	float: right;
+	color: #9ad;
+}
+hr {
+	border: none;
+	border-top: 1px solid #333;
+	margin: 8px 0;
+}
+&lt;/style&gt;
+
+&lt;div id=&quot;ui-bar&quot;&gt;
+	&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
+	Day &lt;&lt;print $day&gt;&gt;&lt;br&gt;
+	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&quot;0&quot;)&gt;&gt;&lt;br&gt;
 	&lt;&lt;print $season&gt;&gt;
-&lt;/span&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="startup" position="100,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
-&lt;&lt;set $hour = 8&gt;&gt;
-&lt;&lt;set $minute = 0&gt;&gt;
-&lt;&lt;set $season = &quot;spring&quot;&gt;&gt;
-&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="LoginCheck" tags="" position="225,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
+
+	&lt;hr&gt;
+
+	&lt;button onclick=&quot;UIBar.toggle()&quot;&gt;UI 접기&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;passages&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+window.UIBar = {
+	toggle() {
+		const bar = document.getElementById(&quot;ui-bar&quot;);
+		const p = document.getElementById(&quot;passages&quot;);
+		if (bar.style.display === &quot;none&quot;) {
+			bar.style.display = &quot;block&quot;;
+			p.style.marginLeft = &quot;260px&quot;;
+		} else {
+			bar.style.display = &quot;none&quot;;
+			p.style.marginLeft = &quot;0&quot;;
+		}
+	}
+};
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="" position="100,725" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
+&lt;&lt;set $hasSave = false&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="LoginCheck" tags="" position="225,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
 	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
 	[[계속-&gt;Login]]
@@ -663,22 +712,24 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 &lt;&lt;if $my_palace is &quot;naniegung&quot;&gt;&gt;
 &lt;!--- 다른 이들과의 관계: 가까운 위치일수록 먼저 친해지고 시작&gt;
 &lt;!-- 위치에 따라 주목도 가감&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="PlayerSetting" tags="" position="100,850" size="100,100">&lt;!-- 근데 이 파일이 필요한지 잘 모르겠다 일단 보류 --&gt;</tw-passagedata><tw-passagedata pid="62" name="TimeSystem" tags="widget" position="225,850" size="100,100">&lt;&lt;widget &quot;addTime&quot;&gt;&gt;
-&lt;&lt;set _addMin = $args[0]&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="PlayerSetting" tags="" position="100,850" size="100,100">&lt;!-- 근데 이 파일이 필요한지 잘 모르겠다 일단 보류 --&gt;</tw-passagedata><tw-passagedata pid="62" name="Time" tags="startup" position="225,850" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
+&lt;&lt;set $hour = 8&gt;&gt;
+&lt;&lt;set $minute = 0&gt;&gt;
+&lt;&lt;set $season = &quot;spring&quot;&gt;&gt;
+&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="TimeSystem" tags="widget" position="350,850" size="100,100">&lt;&lt;widget &quot;addTime&quot;&gt;&gt;
+	&lt;&lt;set _m = $args[0]&gt;&gt;
+	&lt;&lt;set $minute += _m&gt;&gt;
 
-&lt;&lt;set $minute += _addMin&gt;&gt;
+	&lt;&lt;while $minute &gt;= 60&gt;&gt;
+		&lt;&lt;set $minute -= 60&gt;&gt;
+		&lt;&lt;set $hour += 1&gt;&gt;
+	&lt;&lt;/while&gt;&gt;
 
-&lt;&lt;while $minute &gt;= 60&gt;&gt;
-	&lt;&lt;set $minute -= 60&gt;&gt;
-	&lt;&lt;set $hour += 1&gt;&gt;
-&lt;&lt;/while&gt;&gt;
-
-&lt;&lt;while $hour &gt;= 24&gt;&gt;
-	&lt;&lt;set $hour -= 24&gt;&gt;
-	&lt;&lt;set $day += 1&gt;&gt;
-	&lt;&lt;run Engine.play(&quot;CheckSeason&quot;)&gt;&gt;
-&lt;&lt;/while&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="CheckSeason" tags="" position="350,850" size="100,100">&lt;&lt;if $day &lt;= 30&gt;&gt;
+	&lt;&lt;while $hour &gt;= 24&gt;&gt;
+		&lt;&lt;set $hour -= 24&gt;&gt;
+		&lt;&lt;set $day += 1&gt;&gt;
+	&lt;&lt;/while&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="CheckSeason" tags="" position="475,850" size="100,100">&lt;&lt;if $day &lt;= 30&gt;&gt;
     &lt;&lt;set $season = &quot;spring&quot;&gt;&gt;
 &lt;&lt;elseif $day &lt;=60&gt;&gt;
     &lt;&lt;set $season = &quot;summer&quot;&gt;&gt;
