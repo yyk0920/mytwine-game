@@ -1,0 +1,14 @@
+:: StoryInterface
+<div style="
+	padding:10px;
+	font-size:0.9em;
+	color:#ccc;
+	border-bottom:1px solid #444;
+">
+
+<strong>시간</strong><br>
+Day <<print $day>><br>
+<<print $hour>>:<<print String($minute).padStart(2,"0")>><br>
+<<print $season>>
+
+</div>
