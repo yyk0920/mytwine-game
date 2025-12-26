@@ -1,9 +1,55 @@
-:: StoryMenu
-<<if $day gt 0>>
-<div style="font-size:0.8em; line-height:1.4; color:#ccc;">
-	<b>시간</b><br>
-	Day <<print $day>><br>
-	<<print $hour>>:<<print String($minute).padStart(2,'0')>><br>
-	<<print $season>>
-</div>
-<</if>>
+:: StoryInterface
+<!-- 기본 SugarCube UI는 그대로 두고, 그 안에 시간 패널만 추가 -->
+
+<style>
+#time-panel {
+	margin-top: 1em;
+	padding: 0.6em;
+	border: 1px solid #333;
+	background: #111;
+	color: #ccc;
+	font-size: 0.8em;
+	line-height: 1.4;
+}
+</style>
+
+<script>
+(function () {
+	/* ui-bar가 생길 때까지 기다렸다가 삽입 */
+	function injectTimePanel() {
+		const ui = document.getElementById("ui-bar");
+		if (!ui) {
+			setTimeout(injectTimePanel, 100);
+			return;
+		}
+
+		if (document.getElementById("time-panel")) return;
+
+		const panel = document.createElement("div");
+		panel.id = "time-panel";
+		ui.appendChild(panel);
+
+		updateTimePanel();
+	}
+
+	function updateTimePanel() {
+		const panel = document.getElementById("time-panel");
+		if (!panel || !window.State) return;
+
+		const V = State.variables;
+		if (V.day == null) return;
+
+		panel.innerHTML = `
+			<b>시간</b><br>
+			Day ${V.day}<br>
+			${V.hour}:${String(V.minute).padStart(2,"0")}<br>
+			${V.season}
+		`;
+	}
+
+	/* 패시지 이동 때마다 시간 갱신 */
+	$(document).on(":passageend", updateTimePanel);
+
+	injectTimePanel();
+})();
+</script>
