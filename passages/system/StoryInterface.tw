@@ -1,5 +1,5 @@
 :: StoryInterface
-<!-- 기본 SugarCube UI는 그대로 두고, 그 안에 시간 패널만 추가 -->
+<!-- 기본 SugarCube UI 유지 + 시간 패널만 추가 -->
 
 <style>
 #time-panel {
@@ -8,14 +8,13 @@
 	border: 1px solid #333;
 	background: #111;
 	color: #ccc;
-	font-size: 0.8em;
+	font-size: 1.0em;
 	line-height: 1.4;
 }
 </style>
 
 <script>
 (function () {
-	/* ui-bar가 생길 때까지 기다렸다가 삽입 */
 	function injectTimePanel() {
 		const ui = document.getElementById("ui-bar");
 		if (!ui) {
@@ -33,11 +32,10 @@
 	}
 
 	function updateTimePanel() {
-		const panel = document.getElementById("time-panel");
-		if (!panel || !window.State) return;
-
+		if (!window.State) return;
 		const V = State.variables;
-		if (V.day == null) return;
+		const panel = document.getElementById("time-panel");
+		if (!panel || V.day == null) return;
 
 		panel.innerHTML = `
 			<b>시간</b><br>
@@ -47,9 +45,10 @@
 		`;
 	}
 
-	/* 패시지 이동 때마다 시간 갱신 */
 	$(document).on(":passageend", updateTimePanel);
-
 	injectTimePanel();
 })();
 </script>
+
+<!-- ⚠️ 이거 없으면 게임 절대 안 켜짐 -->
+<div id="passages"></div>

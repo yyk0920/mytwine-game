@@ -434,14 +434,60 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 (1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="49" name="Observe_DanAeng" tags="" position="1100,600" size="100,100">분위기를 살폈다.
 
-(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryMenu" tags="" position="1225,600" size="100,100">&lt;&lt;if $day gt 0&gt;&gt;
-&lt;div style=&quot;font-size:0.8em; line-height:1.4; color:#ccc;&quot;&gt;
-	&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
-	Day &lt;&lt;print $day&gt;&gt;&lt;br&gt;
-	&lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&#39;0&#39;)&gt;&gt;&lt;br&gt;
-	&lt;&lt;print $season&gt;&gt;
-&lt;/div&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="" position="100,725" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
+(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryInterface" tags="" position="1225,600" size="100,100">&lt;!-- 기본 SugarCube UI는 그대로 두고, 그 안에 시간 패널만 추가 --&gt;
+
+&lt;style&gt;
+#time-panel {
+	margin-top: 1em;
+	padding: 0.6em;
+	border: 1px solid #333;
+	background: #111;
+	color: #ccc;
+	font-size: 0.8em;
+	line-height: 1.4;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+(function () {
+	/* ui-bar가 생길 때까지 기다렸다가 삽입 */
+	function injectTimePanel() {
+		const ui = document.getElementById(&quot;ui-bar&quot;);
+		if (!ui) {
+			setTimeout(injectTimePanel, 100);
+			return;
+		}
+
+		if (document.getElementById(&quot;time-panel&quot;)) return;
+
+		const panel = document.createElement(&quot;div&quot;);
+		panel.id = &quot;time-panel&quot;;
+		ui.appendChild(panel);
+
+		updateTimePanel();
+	}
+
+	function updateTimePanel() {
+		const panel = document.getElementById(&quot;time-panel&quot;);
+		if (!panel || !window.State) return;
+
+		const V = State.variables;
+		if (V.day == null) return;
+
+		panel.innerHTML = `
+			&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
+			Day ${V.day}&lt;br&gt;
+			${V.hour}:${String(V.minute).padStart(2,&quot;0&quot;)}&lt;br&gt;
+			${V.season}
+		`;
+	}
+
+	/* 패시지 이동 때마다 시간 갱신 */
+	$(document).on(&quot;:passageend&quot;, updateTimePanel);
+
+	injectTimePanel();
+})();
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="" position="100,725" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
 &lt;&lt;set $hasSave = false&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="LoginCheck" tags="" position="225,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
 	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
