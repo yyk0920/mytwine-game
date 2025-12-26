@@ -434,7 +434,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 (1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="49" name="Observe_DanAeng" tags="" position="1100,600" size="100,100">분위기를 살폈다.
 
-(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryInterface" tags="" position="1225,600" size="100,100">&lt;!-- 기본 SugarCube UI는 그대로 두고, 그 안에 시간 패널만 추가 --&gt;
+(1) [[돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="50" name="StoryInterface" tags="" position="1225,600" size="100,100">&lt;!-- 기본 SugarCube UI 유지 + 시간 패널만 추가 --&gt;
 
 &lt;style&gt;
 #time-panel {
@@ -443,14 +443,13 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 	border: 1px solid #333;
 	background: #111;
 	color: #ccc;
-	font-size: 0.8em;
+	font-size: 1.0em;
 	line-height: 1.4;
 }
 &lt;/style&gt;
 
 &lt;script&gt;
 (function () {
-	/* ui-bar가 생길 때까지 기다렸다가 삽입 */
 	function injectTimePanel() {
 		const ui = document.getElementById(&quot;ui-bar&quot;);
 		if (!ui) {
@@ -468,11 +467,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 	}
 
 	function updateTimePanel() {
-		const panel = document.getElementById(&quot;time-panel&quot;);
-		if (!panel || !window.State) return;
-
+		if (!window.State) return;
 		const V = State.variables;
-		if (V.day == null) return;
+		const panel = document.getElementById(&quot;time-panel&quot;);
+		if (!panel || V.day == null) return;
 
 		panel.innerHTML = `
 			&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
@@ -482,12 +480,13 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		`;
 	}
 
-	/* 패시지 이동 때마다 시간 갱신 */
 	$(document).on(&quot;:passageend&quot;, updateTimePanel);
-
 	injectTimePanel();
 })();
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="" position="100,725" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
+&lt;/script&gt;
+
+&lt;!-- ⚠️ 이거 없으면 게임 절대 안 켜짐 --&gt;
+&lt;div id=&quot;passages&quot;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="51" name="StoryInit" tags="" position="100,725" size="100,100">&lt;&lt;set $isLogin = false&gt;&gt;
 &lt;&lt;set $hasSave = false&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="LoginCheck" tags="" position="225,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
 	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
