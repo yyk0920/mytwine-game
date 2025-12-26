@@ -5,7 +5,7 @@
 
 (1) [[조용히 산책한다->GardenWalk]]
 (2) [[연못가에 앉아 쉰다->GardenRest]]
-(3) [[궁궐로 돌아간다->PalaceHub]]
+(3) [[궁궐로 돌아간다->MyPalace]]
 
 :: GardenWalk
 <<set _roll = random(1, 100)>>
@@ -26,4 +26,4 @@
 연못가에 앉아 쉰다.  
 잠시 시간을 보낸다.
 
-(1) [[이만 돌아간다->PalaceHub]]
+(1) [[이만 돌아간다->MyPalace]]

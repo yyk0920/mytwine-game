@@ -85,7 +85,7 @@
 당신은 <<print $my_palace>> 전전의 내실에 있습니다.
 
 [[외실로 향한다->OuterPalace_Front]]
-[[몸을 씻는다->Bath]]
+[[몸을 씻는다->bath]]
 [[잠에 든다->Sleep]]
 <!-- 잠에 든다의 경우 시간 기능을 만들고 시간대에 따라 잠/낮잠으로 토글-->
 [[무언가를 곰곰이 생각한다->Think]]
@@ -107,24 +107,24 @@
 [[결국 잠든다->Sleep]]
 
 
-:: Bath
+:: bath
 
 따뜻한 물이 피로를 씻어낸다.
 
 (1) [[천천히 몸을 담근다->BathRelax]]
 (2) [[간단히 씻고 나온다->BathQuick]]
 
-:: BathRelax
+:: bathRelax
 
 몸이 나른해진다.
 
-[[궁궐로 돌아간다->PalaceHub]]
+[[궁궐로 돌아간다->MyPalace]]
 
-:: BathQuick
+:: bathQuick
 
 빠르게 몸을 씻고 나온다.
 
-[[궁궐로 돌아간다->PalaceHub]]
+[[궁궐로 돌아간다->MyPalace]]
 
 
 
@@ -145,7 +145,7 @@
 
 
 
-[[아침이 밝아온다->PalaceHub]]
+[[아침이 밝아온다->MyPalace]]
 :: InnerPalace_Back
 :: OuterPalace_Back
 :: outside
