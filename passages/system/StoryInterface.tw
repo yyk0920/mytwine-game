@@ -1,6 +1,6 @@
 :: StoryCaption
-<<if $day is defined>>
-<div style="font-size:14px; color:#ccc; padding-top:6px;">
+<<if $day is not undefined>>
+<div style="font-size:1.0em; color:#ccc; padding-top:6px;">
   <b>시간</b><br>
   Day <<print $day>><br>
   <<print $hour>>:<<print String($minute).padStart(2,"0")>><br>
