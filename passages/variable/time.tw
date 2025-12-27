@@ -3,7 +3,7 @@
 <<set $day = 1>>
 <<set $hour = 8>>
 <<set $minute = 0>>
-<<set $season = "spring">>
+<<set $season = "봄">>
 <<set $isSleeping = false>>
 
 :: TimeSystem [widget]
@@ -20,15 +20,19 @@
 		<<set $hour -= 24>>
 		<<set $day += 1>>
 	<</while>>
+
+	<<run UI.alert("")>>
+
+	<<include "CheckSeason">>
 <</widget>>
 
 :: CheckSeason
 <<if $day <= 30>>
-    <<set $season = "spring">>
+    <<set $season = "봄">>
 <<elseif $day <=60>>
-    <<set $season = "summer">>
+    <<set $season = "여름">>
 <<elseif $day <= 90>>
-    <<set $season = "autumn">>
+    <<set $season = "가을">>
 <<else>>
-    <<set $season = "winter">>
+    <<set $season = "겨울">>
 <</if>>
